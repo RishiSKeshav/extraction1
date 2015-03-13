@@ -38,10 +38,9 @@ public class Extractor
 				"I:\\books\\CS454(information Retrieval)\\data\\Crawler\\Extracter.json");
 
 		// extract("I:\\books\\CS454(information Retrieval)\\data\\Crawler\\Crawler.json");
-		String path = "I:\\books\\CS454(information Retrieval)\\data\\Crawler\\Crawler.json";
+		//String path = "I:\\books\\CS454(information Retrieval)\\data\\Crawler\\Crawler.json";
 
-		// String path =
-		// "I:\\books\\CS454(information Retrieval)\\data\\Crawler\\" + args[1];
+		 String path ="I:\\books\\CS454(information Retrieval)\\data\\Crawler\\" + args[1];
 
 		readJson(path);
 
@@ -75,8 +74,9 @@ public class Extractor
 				meta.put("url", jsonObject.get("url"));
 				meta.put("localpath", jsonObject.get("localpath"));
 				
-				System.out.println(localpath);
-				System.out.println(metadataOfFile);
+				System.out.println("Currently extracting from "+localpath);
+				System.out.println();
+				//System.out.println(metadataOfFile);
 				if(metadataOfFile.get("Content-Type").contains("png") || metadataOfFile.get("Content-Type").contains("jpeg") || metadataOfFile.get("Content-Type").contains("gif"))
 				{
 					meta.put("Content-Type", metadataOfFile.get("Content-Type"));
