@@ -60,6 +60,9 @@ public class Extractor
 			object = parser.parse(new FileReader(path));
 			JSONArray jsonArray = (JSONArray) object;
 
+			System.out.println(jsonArray.size());
+			
+			
 			for (Object o : jsonArray)
 			{
 				Map<String, Object> meta = new HashMap<String, Object>();
