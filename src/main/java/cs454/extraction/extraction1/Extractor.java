@@ -34,13 +34,15 @@ public class Extractor
 	public static JSONArray jsonArrayToPrint = new JSONArray();
 
 	public static void main(String[] args) {
-		File file = new File(
-				"I:\\books\\CS454(information Retrieval)\\data\\Crawler\\Extracter.json");
+		
+		File temp = new File(args[1]);
+		
+		File file = new File(temp.getParent()+"\\Extracter.json");
 
 		// extract("I:\\books\\CS454(information Retrieval)\\data\\Crawler\\Crawler.json");
 		//String path = "I:\\books\\CS454(information Retrieval)\\data\\Crawler\\Crawler.json";
 
-		 String path ="I:\\books\\CS454(information Retrieval)\\data\\Crawler\\" + args[1];
+		 String path =args[1];
 
 		readJson(path);
 
@@ -76,11 +78,12 @@ public class Extractor
 				meta.put("last pulled", jsonObject.get("last pulled"));
 				meta.put("url", jsonObject.get("url"));
 				meta.put("localpath", jsonObject.get("localpath"));
+				meta.put("metadata", metadataOfFile);
 				
 				System.out.println("Currently extracting from "+localpath);
 				System.out.println();
 				//System.out.println(metadataOfFile);
-				if(metadataOfFile.get("Content-Type").contains("png") || metadataOfFile.get("Content-Type").contains("jpeg") || metadataOfFile.get("Content-Type").contains("gif"))
+				/*if(metadataOfFile.get("Content-Type").contains("png") || metadataOfFile.get("Content-Type").contains("jpeg") || metadataOfFile.get("Content-Type").contains("gif"))
 				{
 					meta.put("Content-Type", metadataOfFile.get("Content-Type"));
 					meta.put("Tiff Image Length", metadataOfFile.get("tiff:ImageLength"));
@@ -88,11 +91,11 @@ public class Extractor
 					meta.put("Image Width", metadataOfFile.get("Image Width"));
 					
 					
-					/*System.out.println("Tiff Image Length: "+metadataOfFile.get("tiff:ImageLength"));
+					System.out.println("Tiff Image Length: "+metadataOfFile.get("tiff:ImageLength"));
 					System.out.println("Image Length: "+metadataOfFile.get("Image Length"));
 					System.out.println("Image Width: "+metadataOfFile.get("Image Width"));
-					*//*System.out.println("Tiff Image Length: "+metadataOfFile.get("tiff:ImageLength"));
-					System.out.println("Tiff Image Length: "+metadataOfFile.get("tiff:ImageLength"));*/
+					System.out.println("Tiff Image Length: "+metadataOfFile.get("tiff:ImageLength"));
+					System.out.println("Tiff Image Length: "+metadataOfFile.get("tiff:ImageLength"));
 					
 				}
 				
@@ -109,13 +112,13 @@ public class Extractor
 					meta.put("Last-Modified", metadataOfFile.get("Last-Modified"));
 					meta.put("Title", metadataOfFile.get("dc:title"));
 					
-					/*System.out.println("Author: "+metadataOfFile.get("Author"));
+					System.out.println("Author: "+metadataOfFile.get("Author"));
 					System.out.println("Producer: "+metadataOfFile.get("producer"));
 					System.out.println("Creator: "+metadataOfFile.get("dc:creator"));
 					System.out.println("Creation Date: "+metadataOfFile.get("meta:creation-date"));
 					System.out.println("Last-Modified: "+metadataOfFile.get("Last-Modified"));
-					System.out.println("Title: "+metadataOfFile.get("dc:title"));*/
-				}
+					System.out.println("Title: "+metadataOfFile.get("dc:title"));
+				}*/
 				
 				//System.out.println(metadataOfFile);
 				jsonArrayToPrint.add(meta);
