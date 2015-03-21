@@ -27,7 +27,6 @@ import org.xml.sax.SAXException;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
 
 public class Extractor
 {
@@ -51,6 +50,7 @@ public class Extractor
 		 writeFile(file);
 	}
 
+	@SuppressWarnings("unchecked")
 	private static void readJson(String path) {
 		JSONParser parser = new JSONParser();
 		Object object;
@@ -143,6 +143,7 @@ public class Extractor
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private static Metadata readFile(String localpath) {
 		Map<String,Object> metadata = new HashMap<String, Object>();
 		
@@ -283,7 +284,7 @@ public class Extractor
 			String path = file1.getAbsolutePath();
 
 			Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-			Gson uglyJson = new Gson();
+		
 			String pretJson = prettyGson.toJson(jsonArrayToPrint);
 
 			FileWriter file = new FileWriter(path, true);
